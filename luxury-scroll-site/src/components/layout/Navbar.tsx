@@ -10,6 +10,7 @@ export function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const [isLightSection, setIsLightSection] = useState(false);
+  const [isNearBottom, setIsNearBottom] = useState(false);
   const pathname = usePathname();
   const isHomePage = pathname === '/';
 
@@ -19,6 +20,11 @@ export function Navbar() {
       
       // Determine scroll threshold for header animation
       setIsScrolled(scrollY > 30);
+
+      // Check if user is scrolled near the bottom of the document to hide the navbar (preventing footer logo overlap)
+      const scrollHeight = document.documentElement.scrollHeight;
+      const clientHeight = document.documentElement.clientHeight;
+      setIsNearBottom(scrollHeight - clientHeight - scrollY < 450);
 
       // Transition navbar text theme when entering the light sections on Home
       if (isHomePage) {
@@ -64,8 +70,11 @@ export function Navbar() {
     <>
       <motion.header
         initial={{ y: -50, opacity: 0 }}
-        animate={{ y: 0, opacity: 1 }}
-        transition={{ duration: 1.2, ease: [0.76, 0, 0.24, 1] }}
+        animate={{ 
+          y: isNearBottom ? -100 : 0, 
+          opacity: isNearBottom ? 0 : 1 
+        }}
+        transition={{ duration: 0.8, ease: [0.76, 0, 0.24, 1] }}
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-700 bg-transparent ${
           isScrolled && !isOpen ? 'py-4' : 'py-8'
         }`}

@@ -4,6 +4,7 @@ import "./globals.css";
 import { SmoothScroll } from "@/components/layout/SmoothScroll";
 import { Navbar } from "@/components/layout/Navbar";
 import { CustomCursor } from "@/components/layout/CustomCursor";
+import { Footer } from "@/components/layout/Footer";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -39,6 +40,7 @@ export default function RootLayout({
         <SmoothScroll />
         <Navbar />
         {children}
+        <Footer />
       </body>
     </html>
   );
