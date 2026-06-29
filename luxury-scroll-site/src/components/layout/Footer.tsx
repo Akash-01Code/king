@@ -45,7 +45,7 @@ export function Footer() {
           alt="Landscape Sketch Background"
           fill
           sizes="100vw"
-          className="object-cover object-bottom"
+          className="object-contain object-right-bottom"
           priority
         />
       </div>
