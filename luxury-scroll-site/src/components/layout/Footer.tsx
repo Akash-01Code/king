@@ -36,10 +36,10 @@ export function Footer() {
   }, []);
 
   return (
-    <footer className="bg-[#f5f4ed] text-black pt-24 pb-72 relative overflow-hidden border-t border-black/10 select-none z-10 w-full flex-shrink-0">
+    <footer className="bg-[#f5f4ed] text-black pt-24 pb-24 relative overflow-hidden border-t border-black/10 select-none z-10 w-full flex-shrink-0">
       
       {/* Background Mountain/Pines Landscape Sketch */}
-      <div className="absolute inset-0 w-full h-full pointer-events-none select-none z-0 mix-blend-multiply opacity-15">
+      <div className="absolute inset-0 w-full h-full pointer-events-none select-none z-0 mix-blend-multiply opacity-8">
         <Image 
           src="/images/footer-imagev2.png"
           alt="Landscape Sketch Background"
@@ -172,7 +172,7 @@ export function Footer() {
       <div className="max-w-7xl mx-auto px-8 md:px-16 relative z-10 space-y-6">
         
         {/* Monospace Metadata Row */}
-        <div className="flex flex-wrap gap-x-8 gap-y-3 text-[9px] font-mono text-black/55 tracking-wider uppercase items-center">
+        <div className="flex flex-wrap gap-x-8 gap-y-3 text-[9px] font-mono font-bold text-black tracking-wider uppercase items-center">
           <span>© 2026 VERTICE</span>
           <span className="w-1.5 h-1.5 rounded-full bg-black/15 hidden sm:inline" />
           <span>VERTICE.COM</span>
@@ -191,7 +191,7 @@ export function Footer() {
         </div>
 
         {/* Small disclaimer copy */}
-        <p className="text-[9px] text-black/35 font-light leading-relaxed max-w-2xl">
+        <p className="text-[9px] text-black/60 font-semibold leading-relaxed max-w-2xl">
           Vertice is a registered trademark of Vertice Residences, Inc. Architectural details, layouts, and specifications shown are conceptual renderings based on initial design drafts and are subject to final municipal approvals and terrain adjustments.
         </p>
 
