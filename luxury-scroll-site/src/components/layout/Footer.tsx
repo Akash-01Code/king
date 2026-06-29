@@ -41,7 +41,7 @@ export function Footer() {
       {/* Background Mountain/Pines Landscape Sketch */}
       <div className="absolute inset-0 w-full h-full pointer-events-none select-none z-0 mix-blend-multiply opacity-8">
         <Image 
-          src="/images/footer-imagev2.png"
+          src="/images/footer-imagev3.png"
           alt="Landscape Sketch Background"
           fill
           sizes="100vw"
