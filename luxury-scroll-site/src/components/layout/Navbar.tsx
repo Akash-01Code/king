@@ -4,11 +4,14 @@ import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import Link from 'next/link';
 import Image from 'next/image';
+import { usePathname } from 'next/navigation';
 
 export function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const [isLightSection, setIsLightSection] = useState(false);
+  const pathname = usePathname();
+  const isHomePage = pathname === '/';
 
   useEffect(() => {
     const handleScroll = () => {
@@ -17,20 +20,31 @@ export function Navbar() {
       // Determine scroll threshold for header animation
       setIsScrolled(scrollY > 30);
 
-      // Transition navbar text theme when entering the light sections
-      const canvasHeight = window.innerHeight * 9.5;
-      setIsLightSection(scrollY > canvasHeight);
+      // Transition navbar text theme when entering the light sections on Home
+      if (isHomePage) {
+        const canvasHeight = window.innerHeight * 9.5;
+        setIsLightSection(scrollY > canvasHeight);
+      } else {
+        setIsLightSection(true);
+      }
     };
+
+    if (!isHomePage) {
+      setIsLightSection(true);
+    } else {
+      handleScroll();
+    }
 
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+  }, [isHomePage]);
 
   const navItems = [
-    { name: 'Overview', id: 'overview', index: '01' },
-    { name: 'Atelier', id: 'atelier', index: '02' },
-    { name: 'Residences', id: 'overview', index: '03' }, // Anchor links mapped to existing sections
-    { name: 'Inquire', id: 'inquire', index: '04' }
+    { name: 'Overview', href: '/#overview', index: '01' },
+    { name: 'Atelier', href: '/#atelier', index: '02' },
+    { name: 'Amenities', href: '/amenities', index: '03' },
+    { name: 'Brochure', href: '/brochure', index: '04' },
+    { name: 'Inquire', href: '/#inquire', index: '05' }
   ];
 
   // Colors based on page scroll and menu open states
@@ -125,7 +139,7 @@ export function Navbar() {
                     }}
                   >
                     <Link
-                      href={`#${item.id}`}
+                      href={item.href}
                       onClick={() => setIsOpen(false)}
                       className="group flex items-baseline gap-6 font-serif font-light text-5xl md:text-7xl lg:text-8xl tracking-tight text-black hover:text-black/60 transition-colors duration-300 leading-none"
                     >
