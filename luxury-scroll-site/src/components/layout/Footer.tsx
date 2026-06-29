@@ -36,7 +36,7 @@ export function Footer() {
   }, []);
 
   return (
-    <footer className="bg-[#f5f4ed] text-black pt-24 pb-24 relative overflow-hidden border-t border-black/10 select-none z-10 w-full flex-shrink-0">
+    <footer className="bg-[#f5f4ed] text-black pt-24 pb-4 relative overflow-hidden border-t border-black/10 select-none z-10 w-full flex-shrink-0">
       
       {/* Background Mountain/Pines Landscape Sketch */}
       <div className="absolute inset-0 w-full h-full pointer-events-none select-none z-0 mix-blend-multiply opacity-8">
